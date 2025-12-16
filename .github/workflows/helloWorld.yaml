@@ -1,0 +1,19 @@
+name: "Hello World from github actions"
+
+on:
+  push: 
+    branches: 
+      - main
+
+jobs:
+  sayHello:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: This is first step
+        run: echo "Hello from github actions"
+  sayBye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is second step
+        run: echo "Bye BYe !  Lols"
+        
