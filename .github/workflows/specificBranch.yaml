@@ -1,0 +1,22 @@
+name: Run workflow on specific branches
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'develop'
+
+jobs:
+  firstJob:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    steps: 
+      - name: This should fire only for main
+        run: echo "Hello this should be from main branch"
+  secondJob:
+    if: github.ref_name == 'develop'
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is second job
+        run: echo "This should fire only for develop branch"
+        
