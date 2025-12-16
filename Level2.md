@@ -17,7 +17,7 @@ On pull request
 ---
 
 
-## 4️⃣ 5️⃣ Matrix build
+## 5️⃣ Matrix build
 ### Goal
 Run the same job on:
 - Node 18

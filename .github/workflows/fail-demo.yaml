@@ -1,0 +1,30 @@
+name: Node CI (fail demo)
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm ci
+
+      - name: Fail intentionally
+        run: |
+          echo "Boom 💥"
+          exit 1
+
+      - name: This will NOT run
+        run: echo "You will never see this"
