@@ -1,0 +1,25 @@
+name: Conditional steps and env
+
+on: push
+
+jobs: 
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print build state
+        run: echo "Production build..."
+  dev:
+    runs-on: ubuntu-latest
+    if: github.ref_name != 'main'
+    needs: build
+    steps: 
+      - name: Dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIRST_NAME: Mona
+          LAST_NAME: Lisa
+        run: |
+          echo "Token is $GITHUB_TOKEN"
+          echo "First name: $FIRST_NAME"
+          echo "Last name: $LAST_NAME"
