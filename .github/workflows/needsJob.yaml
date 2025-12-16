@@ -1,0 +1,19 @@
+name: Multiple jobs using needs keyword
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo something out
+        run: echo "Running first build job -> build state"
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps: 
+      - name: Test stage
+        run: echo "Running test stage after build state"
